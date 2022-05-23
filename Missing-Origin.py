@@ -139,7 +139,3 @@ if error_message >= 1:
     print("Check the logs to see which folders had errors and what they were.")
 else:
     print("There were no errors.")    
-
-
-#ToDo
-# test in linux
