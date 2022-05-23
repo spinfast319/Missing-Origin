@@ -14,7 +14,7 @@ import re # Imports regex
 album_directory = "M:\Python Test Environment\Albums" # Which directory do you want to start with?
 log_directory = "M:\Python Test Environment\Logs" # Which directory do you want the log in?
 
-# Set whether you are using nested folders or have all albums in one directory
+# Set whether you are using nested folders or have all albums in one directory here
 # If you have all your ablums in one music directory Music/Album_name then set this value to 1
 # If you have all your albums nest in a Music/Artist/Album style of pattern set this value to 2
 # The default is 1
@@ -55,7 +55,7 @@ def log_outcomes(d,p,m):
         log_name.write(" \n")  
         log_name.close()
         
-#  A function that gets the url of the album, downloads a new origin script and replaces the old one
+#  A function to identify and log directories missing origin files
 def missing_origin(directory):
         global count
         global good_missing
@@ -80,9 +80,7 @@ def missing_origin(directory):
             print("Checking for origin file in " + directory)
             #check to see if there is an origin file
             file_exists = os.path.exists('origin.yaml')
-            #if origin file exists, load it, get url, run gazelle-origin, download new one, replace old one
             if file_exists == True:
-                #open the yaml and turn the data into variables
                 print("--Origin file found for " + name_to_check)
                 count +=1 # variable will increment every loop iteration
                                                                  
@@ -144,5 +142,4 @@ else:
 
 
 #ToDo
-# finsh testing: create a user configuration that lets you choose between nested Music/Artist/Album and not nested Music/Album
 # test in linux
