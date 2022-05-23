@@ -11,8 +11,8 @@ import datetime # Imports functionality that lets you make timestamps
 import re # Imports regex
 
 #  Set your directories here
-album_directory = "M:\Python Test Environment\Albums" # Which directory do you want to start with?
-log_directory = "M:\Python Test Environment\Logs" # Which directory do you want the log in?
+album_directory = "M:\Music\Albums" # Which directory do you want to start with?
+log_directory = "M:\Music\Logs" # Which directory do you want the log in?
 
 # Set whether you are using nested folders or have all albums in one directory here
 # If you have all your ablums in one music directory Music/Album_name then set this value to 1
