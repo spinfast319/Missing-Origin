@@ -14,7 +14,13 @@ import re # Imports regex
 album_directory = "M:\Python Test Environment\Albums" # Which directory do you want to start with?
 log_directory = "M:\Python Test Environment\Logs" # Which directory do you want the log in?
 
-# Set up the counters for completed albums and missing origin files
+# Set whther you are using nested folders or have all albums in on directory
+# If you have all your ablums in one music directory Music/Album_name then set this value to 1
+# If you have all your albums nest in a Music/Artist/Album style of pattern set this value to 2
+# The default is 1
+album_depth = 1
+
+# Establishes the counters for completed albums and missing origin files
 count = 0
 good_missing = 0
 bad_missing = 0
@@ -24,7 +30,7 @@ error_message = 0
 # identifies location origin files are supposed to be
 path_segments = album_directory.split(os.sep)
 segments = len(path_segments)
-origin_location = segments + 1
+origin_location = segments + album_depth
 
 #intro text
 print("")
@@ -135,3 +141,7 @@ if error_message >= 1:
     print("Check the logs to see which folders had errors and what they were.")
 else:
     print("There were no errors.")    
+
+
+#ToDo
+# create a user configuration that lets you choose between nested Music/Artist/Album and not nested Music/Album
