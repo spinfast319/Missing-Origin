@@ -14,7 +14,7 @@ import re # Imports regex
 album_directory = "M:\Python Test Environment\Albums" # Which directory do you want to start with?
 log_directory = "M:\Python Test Environment\Logs" # Which directory do you want the log in?
 
-# Set whther you are using nested folders or have all albums in on directory
+# Set whether you are using nested folders or have all albums in one directory
 # If you have all your ablums in one music directory Music/Album_name then set this value to 1
 # If you have all your albums nest in a Music/Artist/Album style of pattern set this value to 2
 # The default is 1
@@ -144,4 +144,5 @@ else:
 
 
 #ToDo
-# create a user configuration that lets you choose between nested Music/Artist/Album and not nested Music/Album
+# finsh testing: create a user configuration that lets you choose between nested Music/Artist/Album and not nested Music/Album
+# test in linux
