@@ -11,12 +11,8 @@ import datetime  # Imports functionality that lets you make timestamps
 import re  # Imports regex
 
 #  Set your directories here
-album_directory = (
-    "M:\Python Test Environment\Albums"  # Which directory do you want to start with?
-)
-log_directory = (
-    "M:\Python Test Environment\Logs"  # Which directory do you want the log in?
-)
+album_directory = "M:\Python Test Environment\Albums"  # Which directory do you want to start with?
+log_directory = "M:\Python Test Environment\Logs"  # Which directory do you want the log in?
 
 # Set whether you are using nested folders or have all albums in one directory here
 # If you have all your ablums in one music directory Music/Album_name then set this value to 1
@@ -53,14 +49,7 @@ def log_outcomes(d, p, m):
     album_name = album_name[-1]
     log_path = log_directory + os.sep + log_name + ".txt"
     with open(log_path, "a", encoding="utf-8") as log_name:
-        log_name.write(
-            "--{:%b, %d %Y}".format(today)
-            + " at "
-            + "{:%H:%M:%S}".format(today)
-            + " from the "
-            + script_name
-            + ".\n"
-        )
+        log_name.write("--{:%b, %d %Y}".format(today) + " at " + "{:%H:%M:%S}".format(today) + " from the " + script_name + ".\n")
         log_name.write("The album folder " + album_name + " " + message + ".\n")
         log_name.write("Album location: " + directory + "\n")
         log_name.write(" \n")
@@ -104,9 +93,7 @@ def missing_origin(directory):
             # create different log files depending on whether the origin file is missing somewhere it shouldn't be
             if origin_location != current_segments:
                 # log the missing origin file folders that are likely supposed to be missing
-                print(
-                    "--An origin file is missing from a folder that should not have one."
-                )
+                print("--An origin file is missing from a folder that should not have one.")
                 print("--Logged missing origin file.")
                 log_name = "good-missing-origin"
                 log_message = "origin file is missing from a folder that should not have one.\nSince it shouldn't be there it is probably fine but you can double check"
@@ -117,18 +104,14 @@ def missing_origin(directory):
                 print("--An origin file is missing from a folder that should have one.")
                 print("--Logged missing origin file.")
                 log_name = "bad-missing-origin"
-                log_message = (
-                    "origin file is missing from a folder that should have one"
-                )
+                log_message = "origin file is missing from a folder that should have one"
                 log_outcomes(directory, log_name, log_message)
                 bad_missing += 1  # variable will increment every loop iteration
 
 
 # Get all the subdirectories of album_directory recursively and store them in a list:
 directories = [os.path.abspath(x[0]) for x in os.walk(album_directory)]
-directories.remove(
-    os.path.abspath(album_directory)
-)  # If you don't want your main directory included
+directories.remove(os.path.abspath(album_directory))  # If you don't want your main directory included
 
 # Run a loop that goes into each directory identified and updates the origin file
 for i in directories:
@@ -137,51 +120,23 @@ for i in directories:
 
 # Summary text
 print("")
-print(
-    "And knowing is half the battle. This script found " + str(count) + " origin files."
-)
-print(
-    "This script looks for potential missing files or errors. The following messages outline whether any were found."
-)
+print("And knowing is half the battle. This script found " + str(count) + " origin files.")
+print("This script looks for potential missing files or errors. The following messages outline whether any were found.")
 if bad_folder_name >= 1:
-    print(
-        "--Warning: There were "
-        + str(bad_folder_name)
-        + " folders with illegal characters."
-    )
+    print("--Warning: There were " + str(bad_folder_name) + " folders with illegal characters.")
     error_message += 1  # variable will increment if statement is true
 elif bad_folder_name == 0:
-    print(
-        "--Info: There were "
-        + str(bad_folder_name)
-        + " folders with illegal characters."
-    )
+    print("--Info: There were " + str(bad_folder_name) + " folders with illegal characters.")
 if bad_missing >= 1:
-    print(
-        "--Warning: There were "
-        + str(bad_missing)
-        + " folders missing an origin files that should have had them."
-    )
+    print("--Warning: There were " + str(bad_missing) + " folders missing an origin files that should have had them.")
     error_message += 1  # variable will increment if statement is true
 elif bad_missing == 0:
-    print(
-        "--Info: There were "
-        + str(bad_missing)
-        + " folders missing an origin files that should have had them."
-    )
+    print("--Info: There were " + str(bad_missing) + " folders missing an origin files that should have had them.")
 if good_missing >= 1:
-    print(
-        "--Info: Some folders didn't have origin files and probably shouldn't have origin files. "
-        + str(good_missing)
-        + " of these folders were identified."
-    )
+    print("--Info: Some folders didn't have origin files and probably shouldn't have origin files. " + str(good_missing) + " of these folders were identified.")
     error_message += 1  # variable will increment if statement is true
 elif good_missing == 0:
-    print(
-        "--Info: Some folders didn't have origin files and probably shouldn't have origin files. "
-        + str(good_missing)
-        + " of these folders were identified."
-    )
+    print("--Info: Some folders didn't have origin files and probably shouldn't have origin files. " + str(good_missing) + " of these folders were identified.")
 if error_message >= 1:
     print("Check the logs to see which folders had errors and what they were.")
 else:
