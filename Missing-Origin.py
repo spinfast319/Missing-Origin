@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # Find Missing Gazelle-Origin Files
 # author: hypermodified
 # This script loops through folders in a directory looking for origin.yaml files logs missing ones.
